@@ -1,0 +1,34 @@
+[
+	{
+		"title": "实时店内用户列表",
+		"icon": "icon-text",
+		"href": "toUserlist",
+		"spread": false
+	},{
+			"title": "商品管理",
+			"icon": "icon-text",
+			"href": "layuicms2.0/page/new2/GoodsManage.html",
+			"spread": false
+		},
+		{
+			"title": "用户统计分析",
+			"icon": "&#xe634;",
+			"href": "layuicms2.0/page/new2/showdate.html",
+			"spread": false
+		},
+		{
+			"title": "交易单查询",
+			"icon": "&#xe630;",
+			"href": "layuicms2.0/page/new2/checkpay.html",
+			"spread": false
+		},
+		{
+			"title": "售后服务处理",
+			"icon": "&#xe634;",
+			"href": "",
+			"spread": false
+		}
+]
+
+
+

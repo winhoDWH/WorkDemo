@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <!--JDBC相关配置文件，存放JDBC连接所需要的各个参数-->
+    <properties resource="generator/mysql.properties" />
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!--JDBC连接配置-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}">
+        </jdbcConnection>
+
+        <!--指定生成的类型为java类型，避免数据库中number等类型字段 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!--自动生成的实体的存放包路径 -->
+        <javaModelGenerator targetPackage="com.dwh2.entity"
+                            targetProject="src\main\java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!--自动生成的*Mapper.xml文件存放路径 -->
+        <sqlMapGenerator targetPackage="mapper.dwh2"
+                         targetProject="src\main\resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!--自动生成的*Mapper.java存放路径 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.dwh2.mapper" targetProject="src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!--
+        <table tableName="bs_td_m_staff" domainObjectName="BSStaff" />
+        <table tableName="cb_td_m_staff" domainObjectName="CBStaff" />
+        <table tableName="td_b_systemguimenu" domainObjectName="SysMenu" />
+        <table tableName="td_m_funcright" domainObjectName="FuncRight" />
+        <table tableName="td_m_staff" domainObjectName="Staff" />
+        <table tableName="tf_m_stafffuncright" domainObjectName="StaffFuncright" />
+        <table tableName="tf_m_rolefuncright" domainObjectName="RoleFuncright" />
+        <table tableName="td_s_modfile" domainObjectName="Module" />
+        <table tableName="tf_m_stafffuncright" domainObjectName="StaffFuncright" />
+        <table tableName="tf_m_roledataright" domainObjectName="RoleDataRight" />
+        <table tableName="tf_m_staffdataright" domainObjectName="StaffDataRight" />
+        <table tableName="bs_td_m_area" domainObjectName="BSArea" />
+        <table tableName="bs_tf_chl_channel" domainObjectName="BSChannel" />
+        <table tableName="td_b_whitelist" domainObjectName="Whitelist" />
+        <table tableName="td_b_commpara" domainObjectName="Commpara" />
+        -->
+        <!-- <table tableName="bs_td_m_depart" domainObjectName="BSDepart" /> -->
+        <!-- <table tableName="cb_td_m_depart" domainObjectName="CBTdMDepart" /> -->
+        <!--<table tableName="cb_td_m_area" domainObjectName="CBTdMArea" />-->
+        <table tableName="td_b_commpara" domainObjectName="InvalidCommpara" />
+
+
+
+    </context>
+</generatorConfiguration>

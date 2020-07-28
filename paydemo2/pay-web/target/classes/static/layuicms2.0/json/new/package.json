@@ -1,0 +1,17 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 15,
+  "data": [
+    {
+      "goodsName": "学生",
+      "price": "3",
+      "site":"50%"
+    },
+    {
+      "goodsName": "白领",
+      "price": "3",
+      "site":"50%"
+    }
+  ]
+}
