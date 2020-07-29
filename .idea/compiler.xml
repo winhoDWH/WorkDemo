@@ -6,16 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="pay-web" />
+        <module name="Util" />
         <module name="MyDemo" />
-        <module name="Alipay" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Alipay" target="1.5" />
-      <module name="MyDemo" target="1.7" />
+      <module name="MyDemo" target="8" />
       <module name="pay-web" target="1.5" />
       <module name="paydemo" target="1.5" />
+      <module name="Util" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
