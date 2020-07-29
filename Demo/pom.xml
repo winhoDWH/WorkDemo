@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="com.dwh.http://maven.apache.org/POM/4.0.0" xmlns:xsi="com.dwh.http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="com.dwh.http://maven.apache.org/POM/4.0.0 com.dwh.http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.dwh</groupId>
@@ -11,7 +11,7 @@
 
   <name>MyDemo Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <url>com.dwh.http://www.example.com</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -31,12 +31,6 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-web</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-oxm</artifactId>
       <version>${spring.version}</version>
     </dependency>
 
@@ -90,13 +84,6 @@
       <version>1.8.6</version>
     </dependency>
     <!--aspectj end-->
-
-    <!--c3p0-->
-    <dependency>
-      <groupId>com.mchange</groupId>
-      <artifactId>c3p0</artifactId>
-      <version>0.9.5.1</version>
-    </dependency>
 
     <!--servlet/jsp api start-->
     <dependency>
@@ -221,7 +208,7 @@
           <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.45</version>
+            <version>8.0.17</version>
           </dependency>
         </dependencies>
       </plugin>
