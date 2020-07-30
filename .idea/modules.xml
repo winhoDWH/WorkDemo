@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Alipay/paydemo2/Alipay/Alipay.iml" filepath="$PROJECT_DIR$/Alipay/paydemo2/Alipay/Alipay.iml" />
       <module fileurl="file://$PROJECT_DIR$/Demo/MyDemo.iml" filepath="$PROJECT_DIR$/Demo/MyDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringDemo/SpringDemo.iml" filepath="$PROJECT_DIR$/SpringDemo/SpringDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/Util/Util.iml" filepath="$PROJECT_DIR$/Util/Util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Alipay/paydemo2/pay-common/pay-common.iml" filepath="$PROJECT_DIR$/Alipay/paydemo2/pay-common/pay-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/Alipay/paydemo2/pay-web/pay-web.iml" filepath="$PROJECT_DIR$/Alipay/paydemo2/pay-web/pay-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/Alipay/paydemo2/paydemo.iml" filepath="$PROJECT_DIR$/Alipay/paydemo2/paydemo.iml" />
     </modules>
