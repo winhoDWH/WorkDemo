@@ -5,7 +5,7 @@
     </meta>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </meta>
-    <meta com.dwh.http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>获取商品页面</title>
     <link rel="stylesheet" href="/layui/css/layui.css" type="text/css">
     </link>
