@@ -1,2 +1,9 @@
+### IntelliJ IDEA ###
 **.idea
+**.iws
 **.iml
+**.ipr
+/**.war
+/target/
+/**/classes/
+/**/test-classes/
