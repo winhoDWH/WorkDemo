@@ -1,6 +1,7 @@
 package com.dwh.json;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.AllArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,18 +23,55 @@ public class FastJsonUtils {
     /**
      * json常见操作
      */
-    private void commentUseMethod(){
+    public static void main(String[] args){
         /**Json序列化一个javabean成JSON字符串**/
         String objectToJsonString = JSON.toJSONString(new Person("dwh", 21, 1, new Date()));
         Map<String, Object> map = new HashMap<>(2);
         /**将map转成json字符串**/
         String mapToJsonString = JSON.toJSONString(map);
+        /**将Map转成json对象**/
+        JSONObject mapToJsonObject = (JSONObject) JSON.toJSON(map);
+
         /** 将JSON字符串转成指定对象，如果不指定，则转成JSONObject对象 **/
         /** 指定类必须要有无参数的构造函数 **/
         Person jsonStringToObject = JSON.parseObject(objectToJsonString, Person.class);
-        /**JSON字符串转JSONObject**/
+        /**将JSON字符串转JSONObject**/
+        /**和JSONObject.parseObject()是一样的，都是调用了json.parseObject()**/
         JSONObject stringToJsonObject = JSON.parseObject(objectToJsonString);
-        JSONObject.parseObject(objectToJsonString);
+        /**parse方法只会返回一个object，而parseObject方法返回JSONObject**/
+        Object obj = JSON.parse(objectToJsonString);
+
+        /**将JSON对象转成javabean (少用)**/
+        Map jsonObjectToMap = JSON.toJavaObject(mapToJsonObject, Map.class);
+
+        //json在空字符串、null、空值的情况下转换、判断
+        String s = "";
+        String s1 = " ";
+        String s2 = "\n";
+        JSONObject j = JSON.parseObject(null);
+        JSONObject j1 = JSON.parseObject(s);
+        JSONObject j2 = JSON.parseObject(s1);
+        JSONObject j3 = JSON.parseObject(s2);
+        System.out.println(j);
+        System.out.println(j1);
+        System.out.println(j2);
+        System.out.println(j3);
+        System.out.println(j == null);
+        System.out.println(j1 == null);
+        System.out.println(j2 == null);
+        System.out.println(j3 == null);
+
+        String d = "{}";
+        JSONObject j4 = JSON.parseObject(d);
+        System.out.println(j4);
+        System.out.println(j4==null);
+        System.out.println(j4.size());
+
+        String d2 = "[]";
+        JSONArray a = JSON.parseArray(d2);
+        System.out.println(a);
+        System.out.println(a==null);
+        System.out.println(a.size());
     }
 
     /**
@@ -41,7 +80,7 @@ public class FastJsonUtils {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    private class Person{
+    private static class Person{
         /**
          * 该标签可加可不加，对象都可以被序列化
          * 加了标签之后可以修改序列化后的命名等
