@@ -1,4 +1,4 @@
-package com.dwh;
+package com.dwh.date;
 
 import java.text.DateFormat;
 import java.text.Format;
@@ -12,6 +12,7 @@ import java.util.Locale;
 
 /**
  * 格式化操作类
+ * @author dwh
  */
 public class FormatUtils {
     /**
@@ -58,9 +59,33 @@ public class FormatUtils {
         //DateFormat是一个抽象类
         // 使用其构造方法获取的对象，只提供固定的时间格式转换
         //有四种静态常量FULL/LONG/MEDIUM/SHORT
-        DateFormat dateFormat1 = DateFormat.getDateInstance();
-        DateFormat dateFormat2 = DateFormat.getTimeInstance();
-        DateFormat dateFormat3 = DateFormat.getDateTimeInstance();
+        Locale[] locales = new Locale[]{Locale.CHINA, Locale.US};
+        String[] localsName = new String[]{"---中国---", "---美国---"};
+        String[] varName = new String[]{"FULL", "LONG", "MEDIUM", "SHORT"};
+        DateFormat[][] dfms = new DateFormat[2][8];
+        Date date = new Date();
+        for (int i = 0; i < 2; i++){
+            //只格式日期，有两个参数定制地区与格式
+            dfms[i][0] = DateFormat.getDateInstance(DateFormat.FULL, locales[i]);
+            dfms[i][1] = DateFormat.getDateInstance(DateFormat.LONG, locales[i]);
+            dfms[i][2] = DateFormat.getDateInstance(DateFormat.MEDIUM, locales[i]);
+            dfms[i][3] = DateFormat.getDateInstance(DateFormat.SHORT, locales[i]);
+            //只格式时间，有两个参数定制地区与格式
+            dfms[i][4] = DateFormat.getTimeInstance(DateFormat.FULL, locales[i]);
+            dfms[i][5] = DateFormat.getTimeInstance(DateFormat.LONG, locales[i]);
+            dfms[i][6] = DateFormat.getTimeInstance(DateFormat.MEDIUM, locales[i]);
+            dfms[i][7] = DateFormat.getTimeInstance(DateFormat.SHORT, locales[i]);
+
+            System.out.println(localsName[i]);
+            System.out.println(varName[0] + "日期格式为：" + dfms[i][0].format(date));
+            System.out.println(varName[1] + "日期格式为：" + dfms[i][1].format(date));
+            System.out.println(varName[2] + "日期格式为：" + dfms[i][2].format(date));
+            System.out.println(varName[3] + "日期格式为：" + dfms[i][3].format(date));
+            System.out.println(varName[0] + "时间格式为：" + dfms[i][4].format(date));
+            System.out.println(varName[1] + "时间格式为：" + dfms[i][5].format(date));
+            System.out.println(varName[2] + "时间格式为：" + dfms[i][6].format(date));
+            System.out.println(varName[3] + "时间格式为：" + dfms[i][7].format(date));
+        }
 
         //自定义格式格式化时间
         //SimpleDateFormat类
@@ -86,6 +111,7 @@ public class FormatUtils {
     }
 
     public static void main(String[] args) {
-        numberFmt();
+        //numberFmt();
+        BaseDateFmt();
     }
 }
