@@ -104,4 +104,13 @@ public class BigDecimalUtil {
         return b1.divide(b2, DEF_DIV_SCALE, round).doubleValue();
     }
 
+    /**
+     * 转换，保留两位小数
+     */
+    {
+        String s = "0.016";
+        BigDecimal bg = new BigDecimal(s);
+        double f1 = bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+    }
+
 }
