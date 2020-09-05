@@ -1,9 +1,6 @@
 package com.dwh.date;
 
-import java.text.DateFormat;
-import java.text.Format;
-import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
+import java.text.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -107,11 +104,28 @@ public class FormatUtils {
         dateTimeFormatters[1].format(LocalDate.now());
         //2. 使用LocalDate类的format方法
         LocalDate.now().format(dateTimeFormatters[0]);
-
     }
 
-    public static void main(String[] args) {
+    /**
+     *  simpleDateFormat
+     */
+    public static void simpleFmt() throws ParseException {
+        Date date = new Date();
+        SimpleDateFormat defaultFmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String pattern1 = "G yyyy-MM-dd";
+        String dateStr1 = "AD 2020-06-07";
+        String pattern2 = "hh";
+        String dateStr2 = "2";
+        String pattern3 = "z";
+        SimpleDateFormat fmt = new SimpleDateFormat(pattern3);
+        //System.out.println(defaultFmt.format(fmt.parse(dateStr2)));
+        System.out.println(fmt.format(fmt.parse(dateStr2)));
+        System.out.println(fmt.format(date));
+    }
+
+    public static void main(String[] args) throws ParseException {
         //numberFmt();
-        BaseDateFmt();
+        //BaseDateFmt();
+        simpleFmt();
     }
 }
