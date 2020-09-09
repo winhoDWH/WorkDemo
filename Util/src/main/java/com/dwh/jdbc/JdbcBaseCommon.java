@@ -1,7 +1,10 @@
 package com.dwh.jdbc;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.sql.*;
 import java.util.Properties;
 
@@ -21,33 +24,30 @@ public class JdbcBaseCommon {
     /**
      * 读取配置文件并初始化参数
      */
-    private JdbcBaseCommon(){
+    private JdbcBaseCommon() throws Exception {
         Properties properties = new Properties();
         ClassLoader classLoader = JdbcBaseCommon.class.getClassLoader();
-        /*//定位文件的绝对路径
+        //定位文件的绝对路径
         URL res = classLoader.getResource("jdbc.properties");
         // 获取字符串路径
         String path = res.getPath();
         // 读取文件
-        properties.load(new FileReader(path));*/
-        InputStream io = classLoader.getResourceAsStream("jdbc.properties");
-        try {
-            //获取配置信息
-            properties.load(io);
-            driver = properties.getProperty("driver");
-            user = properties.getProperty("user");
-            password = properties.getProperty("password");
-            url = properties.getProperty("url");
-            Class.forName(driver);
-        }catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        properties.load(new FileReader(path));
+        //InputStream io = classLoader.getResourceAsStream("Util/src/main/resources/jdbc.properties");
+        //获取配置信息
+        //properties.load(io);
+        driver = properties.getProperty("driver");
+        user = properties.getProperty("user");
+        password = properties.getProperty("password");
+        url = properties.getProperty("url");
+        System.out.println(driver);
+        Class.forName(driver);
     }
 
     /**
      * 单例获取
      */
-    public static JdbcBaseCommon getInstance(){
+    public static JdbcBaseCommon getInstance() throws Exception {
         if (jdbc == null){
             synchronized (JdbcBaseCommon.class){
                 if (jdbc == null){
@@ -115,6 +115,14 @@ public class JdbcBaseCommon {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+        try {
+            JdbcBaseCommon dao = JdbcBaseCommon.getInstance();
+        }finally {
+
         }
     }
 }
