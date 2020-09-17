@@ -19,4 +19,6 @@ public class TestBean {
      */
     @SerializedName(value = "emailAddress", alternate = {"email", "email_Address"})
     private String emailAddress;
+    @SerializedName(value = "CivilCode")
+    private String civilCode;
 }

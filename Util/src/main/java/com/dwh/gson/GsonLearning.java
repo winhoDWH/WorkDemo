@@ -1,9 +1,13 @@
 package com.dwh.gson;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 
+import java.lang.annotation.Target;
 import java.util.List;
 
 /**
@@ -13,7 +17,17 @@ import java.util.List;
  */
 public class GsonLearning {
     public static void main(String[] args) {
-
+        Request<TestBean> request = new Request<>();
+        request.setCode("0");
+        request.setMessage("success");
+        TestBean bean = new TestBean();
+        bean.setAge(20);
+        bean.setCivilCode("4401");
+        bean.setEmailAddress("123456@163.com");
+        bean.setName("dwh");
+        request.setData(bean);
+        Gson gson = new Gson();
+        System.out.println(gson.toJson(request));
     }
 
     private static void test(){
@@ -48,6 +62,16 @@ public class GsonLearning {
         Gson gson = new GsonBuilder()
                 //输出类中值为Null的属性到json串中
                 .serializeNulls()
+                //设置日期时间格式，另有两个重载方法
+                //在序列化和反序列化时均生效
+                //另外两个重载方法输入整数为参数，整数对应FULL,LONG等规定好的格式
+                .setDateFormat("yyyy-MM-dd")
+                //不序列化内部类
+                .disableInnerClassSerialization()
+                //不序列化html标签
+                .disableHtmlEscaping()
+                //格式化输出，什么意思？
+                .setPrettyPrinting()
                 .create();
     }
 }
