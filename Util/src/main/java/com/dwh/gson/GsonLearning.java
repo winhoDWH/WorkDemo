@@ -2,12 +2,12 @@ package com.dwh.gson;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
+import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
+import org.codehaus.groovy.transform.tailrec.GotoRecurHereException;
 
 import java.lang.annotation.Target;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,17 +17,11 @@ import java.util.List;
  */
 public class GsonLearning {
     public static void main(String[] args) {
-        Request<TestBean> request = new Request<>();
-        request.setCode("0");
-        request.setMessage("success");
-        TestBean bean = new TestBean();
-        bean.setAge(20);
-        bean.setCivilCode("4401");
-        bean.setEmailAddress("123456@163.com");
-        bean.setName("dwh");
-        request.setData(bean);
         Gson gson = new Gson();
-        System.out.println(gson.toJson(request));
+        TestBean bean = new TestBean();
+        bean.setEmailAddress("1234578");
+        System.out.println(gson.toJson(bean));
+        //testGsonBuilder();
     }
 
     private static void test(){
@@ -65,6 +59,7 @@ public class GsonLearning {
                 //设置日期时间格式，另有两个重载方法
                 //在序列化和反序列化时均生效
                 //另外两个重载方法输入整数为参数，整数对应FULL,LONG等规定好的格式
+                //只对date类型生效，暂时只在序列化中有效
                 .setDateFormat("yyyy-MM-dd")
                 //不序列化内部类
                 .disableInnerClassSerialization()
@@ -72,6 +67,24 @@ public class GsonLearning {
                 .disableHtmlEscaping()
                 //格式化输出，什么意思？
                 .setPrettyPrinting()
+                .addSerializationExclusionStrategy(new ExclusionStrategy() {
+                    @Override
+                    public boolean shouldSkipField(FieldAttributes f) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean shouldSkipClass(Class<?> clazz) {
+                        return false;
+                    }
+                })
+                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_DASHES)
                 .create();
+        Request<String> request = new Request<>();
+        request.setData("123");
+        request.setMessage("132");
+        request.setCode("0");
+        String jsonStr = gson.toJson(request);
+        System.out.println(jsonStr);
     }
 }
