@@ -27,6 +27,7 @@ public class TaskExecutePool {
         executor.setMaxPoolSize(config.getMaxPoolSize());
         executor.setQueueCapacity(config.getQueueCapacity());
         executor.setKeepAliveSeconds(config.getKeepAliveSeconds());
+        //线程名字前缀
         executor.setThreadNamePrefix("TestExecutor-");
         // setRejectedExecutionHandler：当pool已经达到max size的时候，如何处理新任务
         // CallerRunsPolicy：不在新线程中执行任务，而是由调用者所在的线程来执行

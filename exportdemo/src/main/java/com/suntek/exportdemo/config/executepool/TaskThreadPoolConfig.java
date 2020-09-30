@@ -11,12 +11,12 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Data
 @ConfigurationProperties("thread.pool")
 public class TaskThreadPoolConfig {
-    /**线程池*/
+    /**核心线程池大小*/
     private int corePoolSize;
-    /**最大**/
+    /**最大线程数**/
     private int maxPoolSize;
-    /****/
+    /**活跃时间**/
     private int keepAliveSeconds;
-    /****/
+    /**队列容量**/
     private int queueCapacity;
 }
