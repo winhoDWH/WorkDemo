@@ -53,7 +53,7 @@
             <artifactId>springfox-swagger2</artifactId>
             <version>${springfox-swagger2.version}</version>
         </dependency>
-        <!-- swagger-ui -->
+        <!-- swagger-ui 开源代码 git上有-->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>swagger-bootstrap-ui</artifactId>
