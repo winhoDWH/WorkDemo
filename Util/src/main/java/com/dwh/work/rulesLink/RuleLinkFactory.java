@@ -1,10 +1,8 @@
-package com.dwh;
+package com.dwh.work.rulesLink;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 import java.util.concurrent.ConcurrentHashMap;
@@ -12,31 +10,41 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
+ * 工作中遇到
+ * 需要通过写一个布尔表达式，解析该表达式达到通过配置获取特定规则判断数据集是否满足条件
+ * 目的：满足通过简单配置可设定规则并方便增量开发
+ * 优点：
+ *  1. 可以直接解析简单布尔表达式
+ *  2. 通过对枚举类的简单增量开发，使用lambda表达式即可制定一个新的规则
+ * 缺点：
+ *  1. 不支持括号情况
+ * 规则链工厂类
  * @author: dwh
  * @DATE: 2020/10/14
  */
-public class WorkDemo {
+public class RuleLinkFactory {
     public static void main(String[] args) throws Exception {
-        RuleList list = parseBool("rule1|rule2&rule2");
+        RuleLink list = createRuleLink("rule1|rule2&rule2");
         System.out.println(list.doProcess(2));
     }
 
     private static final Character AND = '&';
     private static final Character OR = '|';
-    private static final Character RIGHT_BRACKET = '(';
-    private static final Character LEFT_BRACKET = ')';
-    List<RuleList> opt = new ArrayList<>();
-    List<String> op = new ArrayList<>();
 
-    public static RuleList parseBool(String str) throws Exception {
+    /**
+     * 创建规则链
+     * @param str
+     * @return
+     * @throws Exception
+     */
+    public static RuleLink createRuleLink(String str) throws Exception {
         int len = str.length();
-        RuleList list = new RuleList();
+        RuleLink list = new RuleLink();
         for (int i = 0; i < len; i++){
             Character s = str.charAt(i);
-            if (AND.equals(s)){
-                list.opt.add(AND);
-            }else if (OR.equals(s)){
-                list.opt.add(OR);
+            //当遇到&和|两个符号时
+            if (AND.equals(s) || OR.equals(s)){
+               list.addOpt(s);
             }else {
                 StringBuffer stringBuffer = new StringBuffer();
                 Character next = s;
@@ -50,95 +58,11 @@ public class WorkDemo {
                     }
                 }
                 i--;
-                list.rules.add(Rule.getOptionByName(stringBuffer.toString()));
+                //新增规则
+                list.addRule(RuleMethodEnum.getOptionByName(stringBuffer.toString()));
             }
         }
         return list;
-    }
-
-    /**
-     * 一个元素
-     */
-    static class RuleList{
-        List<Option> rules = new ArrayList<>();
-        List<Character> opt = new ArrayList<>();
-
-        public boolean doProcess(int i){
-            if (rules.size() == 1){
-                return rules.get(0).optionMethod(i);
-            }
-            int len = opt.size();
-            boolean res = rules.get(0).optionMethod(i);
-            for (int n = 0; n < len ; n++){
-                if (OR.equals(opt.get(n))){
-                    if (!res){
-                        res = rules.get(n + 1).optionMethod(i);
-                    }
-                }else {
-                    if (res){
-                        res = rules.get(n + 1).optionMethod(i);
-                    }
-                }
-            }
-            return res;
-        }
-    }
-
-    /**
-     * 规则对应方法类
-     */
-    static enum Rule{
-        /**rule1**/
-        RULE1("rule1", (n)->{
-            System.out.println("rule1");
-            return n > 2;
-        }),
-        /**rule2**/
-        RULE2("rule2", (n)->{
-            System.out.println("rule2");
-            return n <= 2;
-        })
-        ;
-        private String name;
-        private Option option;
-
-        Rule(String name, Option option) {
-            this.name = name;
-            this.option = option;
-        }
-
-        public static Option getOptionByName(String name) throws Exception {
-            for (Rule r : Rule.values()){
-                if (r.getName().equals(name)){
-                    return r.getOption();
-                }
-            }
-            throw new Exception("没有对应方法");
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Option getOption() {
-            return option;
-        }
-
-        public void setOption(Option option) {
-            this.option = option;
-        }
-    }
-
-    interface Option{
-        /**
-         * method
-         * @return
-         */
-        boolean optionMethod(int i);
     }
 
     public boolean parseBoolExpr(String expression) {
