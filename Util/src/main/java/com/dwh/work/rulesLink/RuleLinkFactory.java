@@ -18,6 +18,9 @@ import java.util.function.Predicate;
  *  2. 通过对枚举类的简单增量开发，使用lambda表达式即可制定一个新的规则
  * 缺点：
  *  1. 不支持括号情况
+ *  2. 不支持！情况
+ * 解决方法：
+ *  建议直接重新写一个rule
  * 规则链工厂类
  * @author: dwh
  * @DATE: 2020/10/14
