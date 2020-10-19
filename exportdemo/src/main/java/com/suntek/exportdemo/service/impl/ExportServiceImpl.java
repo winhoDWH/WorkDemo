@@ -2,6 +2,7 @@ package com.suntek.exportdemo.service.impl;
 
 import com.suntek.exportdemo.entity.ImgEntity;
 import com.suntek.exportdemo.service.ExportService;
+import com.suntek.exportdemo.util.DownloadUtil;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,6 +14,6 @@ import org.springframework.stereotype.Service;
 public class ExportServiceImpl implements ExportService {
     @Override
     public void exportImg(ImgEntity data) {
-
+        DownloadUtil.downImage(data);
     }
 }
