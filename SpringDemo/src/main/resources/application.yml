@@ -1,0 +1,13 @@
+swagger:
+  title: swagger
+  description: Test-swagger
+  version: 1.0
+
+spring:
+  config: classpath:logback-spring.xml
+  profiles:
+    active: dev
+
+logback:
+  logPath: ./SpringDemo/logs
+
