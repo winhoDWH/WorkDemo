@@ -1,5 +1,6 @@
 package com.dwh.springdemo.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.MediaType;
@@ -19,6 +20,7 @@ import java.util.Base64;
  * @author dengwenhao
  * date 2020-10-29
  */
+@Slf4j
 public class JavaSerializationConverter extends AbstractHttpMessageConverter<Serializable> {
 
     public JavaSerializationConverter(){
