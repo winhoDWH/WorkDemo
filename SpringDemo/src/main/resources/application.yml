@@ -9,5 +9,5 @@ spring:
     active: dev
 
 logback:
-  logPath: ./SpringDemo/logs
+  logPath: ./logs
 
