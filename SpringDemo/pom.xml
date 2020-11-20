@@ -79,6 +79,68 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>utf-8</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.3.1</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!--运行jar包时运行的主类，要求类全名-->
+                            <mainClass>com.dwh.springdemo.SpringdemoApplication</mainClass>
+                            <!-- 是否指定项目classpath下的依赖 -->
+                            <addClasspath>true</addClasspath>
+                            <!-- 指定依赖的时候声明前缀 -->
+                            <classpathPrefix>./lib/</classpathPrefix>
+                        </manifest>
+                    </archive>
+                    <excludes>
+                        <exclude>**/application*.yml</exclude>
+                        <exclude>**/log4j2*.xml</exclude>
+                        <exclude>**/generatorConfig.xml</exclude>
+                        <exclude>**/generator.properties</exclude>
+                        <exclude>**/*.sql</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <finalName>${project.artifactId}</finalName>
+                    <appendAssemblyId>true</appendAssemblyId> <!-- 包名不含assemblyId -->
+                    <skipAssembly>false</skipAssembly>
+                    <!--如果路径长度超过100字符,执行的操作warn" (default), "fail", "truncate", "gnu", or "omit". -->
+                    <tarLongFileMode>gnu</tarLongFileMode>
+                    <outputDirectory>target</outputDirectory>
+                    <descriptors>
+                        <descriptor>src/main/assembly/package.xml</descriptor>
+                    </descriptors>
+                    <!-- 子POM的属性完全覆盖父POM的 <descriptors combine.self="override"/> -->
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id><!-- ID 标识，命名随意 -->
+                        <phase>package</phase> <!--绑定到package生命周期阶段上 -->
+                        <goals>
+                            <goal>single</goal><!-- 在 PACKAGE 生命周期阶段仅执行一次 -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 

@@ -109,12 +109,13 @@ public class DateBase {
          * LocalDateTime 上面两个组合起来
          */
         LocalDateTime localDateTime = LocalDateTime.now();
-        System.out.println(localDateTime);
+        System.out.println(localDateTime.withMonth(1).withDayOfMonth(1).withHour(0).withMinute(0).withSecond(0));
 
     }
 
     public static void main(String[] args) {
         //dateOption();
-        calendarOption();
+        //calendarOption();
+        newAddDate();
     }
 }
