@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.dwh.springdemo.request.TestRequest;
 import com.dwh.springdemo.response.BaseResponse;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * MIME类型传输
@@ -48,9 +49,14 @@ public class TestParamController {
     }
 
     @RequestMapping(value = "testFromData", method = RequestMethod.POST)
-    public BaseResponse testFormData(TestRequest request){
-        System.out.println(JSON.toJSONString(request));
+    public BaseResponse testFormData(@RequestPart("file") MultipartFile file, @RequestParam String name,@RequestParam(defaultValue = "0") Long password){
         return new BaseResponse("0", "success");
+    }
+
+    @PostMapping("/testJson")
+    public BaseResponse testJson(@RequestParam(required = false) String name,@RequestParam(required = false)  String password){
+        System.out.println(name + password);
+        return new BaseResponse("0", "");
     }
 
 }
