@@ -53,9 +53,15 @@ public class TestParamController {
         return new BaseResponse("0", "success");
     }
 
-    @PostMapping("/testJson")
+    @GetMapping("/testJson")
     public BaseResponse testJson(@RequestParam(required = false) String name,@RequestParam(required = false)  String password){
         System.out.println(name + password);
+        return new BaseResponse("0", "");
+    }
+
+    //@PostMapping("/testJson")
+    public BaseResponse testJson(TestRequest request){
+        //System.out.println(name + password);
         return new BaseResponse("0", "");
     }
 

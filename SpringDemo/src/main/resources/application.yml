@@ -11,3 +11,15 @@ spring:
 logback:
   logPath: ./logs
 
+nacos:
+  config:
+    server-addr: 127.0.0.1:8848
+    data-id: example1
+    auto-refresh: true
+    bootstrap:
+      enable: true
+    type: properties
+    namespace: 38e0a127-acd3-4994-82fe-c3600450255f
+
+dwh:
+  dataId: example
