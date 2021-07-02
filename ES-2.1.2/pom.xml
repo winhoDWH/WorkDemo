@@ -8,7 +8,7 @@
     <artifactId>ES-2.1.2</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <es.version>2.1.2</es.version>
+        <es.version>6.8.15</es.version>
     </properties>
     <dependencies>
         <dependency>
