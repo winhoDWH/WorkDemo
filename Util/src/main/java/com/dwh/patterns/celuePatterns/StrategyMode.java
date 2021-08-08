@@ -1,6 +1,6 @@
-package com.dwh.designpatterns.celue;
+package com.dwh.patterns.celuePatterns;
 
-import com.dwh.designpatterns.celue.imp.PayStationHandlerImpl;
+import com.dwh.patterns.celuePatterns.imp.PayStationHandlerImpl;
 
 import java.util.HashMap;
 

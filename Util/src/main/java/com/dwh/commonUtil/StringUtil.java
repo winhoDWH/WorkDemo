@@ -27,4 +27,11 @@ public class StringUtil {
             return str.trim();
         }
     }
+
+    public static void main(String[] args) {
+        StringBuffer s = new StringBuffer();
+        s.append("adkw233");
+        System.out.println(s.toString());
+        System.out.println(s.deleteCharAt(s.length() - 1).toString());
+    }
 }

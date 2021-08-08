@@ -1,4 +1,4 @@
-package com.dwh.designpatterns.celue;
+package com.dwh.patterns.celuePatterns;
 
 import java.util.Map;
 

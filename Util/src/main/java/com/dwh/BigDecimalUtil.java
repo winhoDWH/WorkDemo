@@ -113,4 +113,12 @@ public class BigDecimalUtil {
         double f1 = bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
     }
 
+    public static void main(String[] args) {
+        BigDecimal allnum = new BigDecimal("70");
+        BigDecimal partNum = new BigDecimal("37");
+        BigDecimal percent = partNum.divide(allnum, 2, BigDecimal.ROUND_HALF_UP);
+        System.out.println(partNum.divide(allnum, 2).doubleValue());
+        System.out.println(percent.doubleValue());
+    }
+
 }

@@ -1,8 +1,8 @@
-package com.dwh.designpatterns.chain.impl;
+package com.dwh.patterns.chainPattern.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.dwh.designpatterns.chain.BaseHandler;
-import com.dwh.designpatterns.chain.Request;
+import com.dwh.patterns.chainPattern.BaseHandler;
+import com.dwh.patterns.chainPattern.Request;
 
 /**
  * 总经理类

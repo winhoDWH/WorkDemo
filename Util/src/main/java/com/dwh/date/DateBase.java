@@ -2,9 +2,11 @@ package com.dwh.date;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -113,9 +115,15 @@ public class DateBase {
 
     }
 
+    private static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
     public static void main(String[] args) {
         //dateOption();
         //calendarOption();
-        newAddDate();
+        //newAddDate();
+        LocalDateTime start = LocalDateTime.parse("2020-12-11 16:00:00", fmt);
+        LocalDateTime end = LocalDateTime.parse("2020-12-11 16:30:59", fmt);
+        Duration duration = Duration.between(start, end);
+        System.out.println("相隔时间差为：" + duration.toMinutes());
     }
 }

@@ -1,4 +1,4 @@
-package com.dwh.designpatterns.chain;
+package com.dwh.patterns.chainPattern;
 
 /**
  * 请求类型枚举类

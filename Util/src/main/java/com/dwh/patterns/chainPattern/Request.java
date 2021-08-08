@@ -1,4 +1,4 @@
-package com.dwh.designpatterns.chain;
+package com.dwh.patterns.chainPattern;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

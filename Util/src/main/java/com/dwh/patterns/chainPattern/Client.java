@@ -1,8 +1,8 @@
-package com.dwh.designpatterns.chain;
+package com.dwh.patterns.chainPattern;
 
-import com.dwh.designpatterns.chain.impl.BossHandler;
-import com.dwh.designpatterns.chain.impl.DeptHandler;
-import com.dwh.designpatterns.chain.impl.GroupHandler;
+import com.dwh.patterns.chainPattern.impl.BossHandler;
+import com.dwh.patterns.chainPattern.impl.DeptHandler;
+import com.dwh.patterns.chainPattern.impl.GroupHandler;
 
 /**
  * 责任链模式-客户端类

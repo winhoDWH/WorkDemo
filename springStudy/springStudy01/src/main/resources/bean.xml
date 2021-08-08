@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- other bean definitions -->
+
+    <!--
+        id:相当于变量名
+        class：是类路径
+    -->
+    <bean id="mysqlDao" class="dwh.dao.impl.MysqlDao"/>
+    <bean id="oracleDao" class="dwh.dao.impl.OracleDao"/>
+
+    <!--使用无参构造创建对象-->
+    <bean id="service" class="dwh.service.impl.SearchServiceImpl">
+        <!--
+            使用该property标签时，必须保证已有对应参数的set方法
+            ref: 引用spring容器中创建的bean
+            value: 基本数据类型和string
+        -->
+        <property name="dao" ref="mysqlDao"/>
+        <property name="flag" value="true"/>
+        <property name="str" value="ssss"/>
+        <property name="number" value="10"/>
+    </bean>
+
+    <!--无参构造-->
+    <bean id="beanNoCon" class="dwh.entity.TestBean">
+        <property name="str" value="sss"/>
+        <property name="dao" ref="oracleDao"/>
+    </bean>
+
+    <!--有参构造，单一参数-->
+    <bean id="beanByOneCon" class="dwh.entity.TestBean">
+        <constructor-arg index="0" value="sss"/>
+    </bean>
+
+    <!--第一种方式 用下标标识参数-->
+    <bean id="bean1" class="dwh.entity.TestBean">
+        <constructor-arg index="0" value="s1"/>
+        <constructor-arg index="1" ref="oracleDao"/>
+    </bean>
+
+    <!--第二种方式 用参数名称标识参数-->
+    <bean id="bean2" class="dwh.entity.TestBean">
+        <constructor-arg name="str" value="s2"/>
+        <constructor-arg name="dao" ref="oracleDao"/>
+    </bean>
+
+    <!--第三种方式 用参数类型标识 不推荐-->
+    <bean id="bean3" class="dwh.entity.TestBean">
+        <!--如果有相同类型的，按顺序来-->
+        <constructor-arg type="java.lang.String" value="ste"/>
+        <constructor-arg type="java.lang.String" value="s3"/>
+        <constructor-arg type="dwh.dao.JdbcDao" ref="oracleDao"/>
+    </bean>
+</beans>

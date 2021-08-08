@@ -1,6 +1,6 @@
-package com.dwh.designpatterns.celue.imp;
+package com.dwh.patterns.celuePatterns.imp;
 
-import com.dwh.designpatterns.celue.BaseHandler;
+import com.dwh.patterns.celuePatterns.BaseHandler;
 
 import java.util.Map;
 

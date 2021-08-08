@@ -1,6 +1,5 @@
-package com.dwh.designpatterns.celue;
+package com.dwh.patterns.celuePatterns;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
