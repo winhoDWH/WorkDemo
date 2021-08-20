@@ -1,13 +1,8 @@
 package com.dwh.gson;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
-import org.codehaus.groovy.transform.tailrec.GotoRecurHereException;
 
-import java.lang.annotation.Target;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,6 +16,7 @@ public class GsonLearning {
         TestBean bean = new TestBean();
         bean.setEmailAddress("1234578");
         System.out.println(gson.toJson(bean));
+        System.out.println("test");
         //testGsonBuilder();
     }
 
