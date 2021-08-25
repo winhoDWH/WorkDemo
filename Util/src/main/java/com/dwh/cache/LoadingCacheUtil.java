@@ -23,6 +23,9 @@ public class LoadingCacheUtil {
                 @Override
                 public void onRemoval(RemovalNotification<String, String> rn) {
                     System.out.println("移除了" + rn.getKey() + "缓存项");
+                    rn.getKey();
+                    rn.getValue();
+                    rn.getCause();
                 }
             })
             //自身的统计功能
@@ -39,6 +42,5 @@ public class LoadingCacheUtil {
             });
 
     public void test(){
-
     }
 }
