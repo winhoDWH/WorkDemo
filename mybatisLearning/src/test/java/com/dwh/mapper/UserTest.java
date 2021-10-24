@@ -56,4 +56,18 @@ public class UserTest {
         //关闭sqlSession
         sqlSession.close();
     }
+
+    /**
+     * 老师查学生
+     */
+    @Test
+    public void testSelectTeacher(){
+        SqlSession sqlSession = MybatisUtil.getSession();
+        TeacherMapper teacherMapper = sqlSession.getMapper(TeacherMapper.class);
+        System.out.println(JSON.toJSONString(teacherMapper.selectAll()));
+
+        System.out.println(JSON.toJSONString(teacherMapper.selectAll2()));
+        //关闭sqlSession
+        sqlSession.close();
+    }
 }
