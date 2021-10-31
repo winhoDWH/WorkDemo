@@ -1,10 +1,12 @@
 package com.dwh.mapper;
 
 import com.alibaba.fastjson.JSON;
+import com.dwh.entity.Blog;
 import com.dwh.entity.User;
 import com.dwh.util.MybatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
+import org.junit.experimental.theories.suppliers.TestedOn;
 
 import java.util.Date;
 
@@ -67,6 +69,30 @@ public class UserTest {
         System.out.println(JSON.toJSONString(teacherMapper.selectAll()));
 
         System.out.println(JSON.toJSONString(teacherMapper.selectAll2()));
+        //关闭sqlSession
+        sqlSession.close();
+    }
+
+    @Test
+    public void testWhere(){
+        SqlSession sqlSession = MybatisUtil.getSession();
+        BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+
+        System.out.println(JSON.toJSONString(mapper.selectByWhere("", "admin", "ASC")));
+        //关闭sqlSession
+        sqlSession.close();
+    }
+
+    @Test
+    public void updateBlog(){
+        SqlSession sqlSession = MybatisUtil.getSession();
+        BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+
+        Blog blog = new Blog();
+        blog.setId("1");
+        blog.setTitle("aaaa");
+        mapper.updateById(blog);
+        sqlSession.commit();
         //关闭sqlSession
         sqlSession.close();
     }

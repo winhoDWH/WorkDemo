@@ -4,16 +4,42 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace绑定一个对应的Dao/Mapper接口 -->
 <mapper namespace="com.dwh.mapper.BlogMapper">
-    <select id="selectByWhere">
+    <select id="selectByWhere" resultType="Blog">
         select * from BLOG
-        <!---->
+        <!--使用where标签，标签中如果有if等条件语句，不需要担心sql中的and或者or，因为where标签会自动去掉-->
         <where>
-            <if test="title != null">
+            <!--if语句做判断-->
+            <if test="title != null and title != ''">
                 TITLE = #{title}
             </if>
-            <if test="">
-                AND
+            <if test="author != null and author != ''">
+                AND AUTHOR = #{author}
             </if>
         </where>
+        order by CREATE_TIME
+        <!--相当于if...else结构-->
+        <choose>
+            <when test="sort = 'ASC'"> ASC </when>
+            <otherwise> DESC </otherwise>
+        </choose>
     </select>
+
+    <update id="updateById" parameterType="Blog">
+        update BLOG
+        <!--类似where标签，会默认添加set关键字，并自动识别去除，-->
+        <set>
+            author = 'admin1',
+           <if test="createTime != '' and createTime != null">CREATE_TIME = #{createTime},</if>
+            <if test="title != '' and title != null"> TITLE = #{title}</if>
+        </set>
+        <!--set标签等价于trim标签-->
+        <!--<trim prefix="set" suffixOverrides=",">
+            author = 'admin1',
+            <if test="createTime != '' and createTime != null">CREATE_TIME = #{createTime},</if>
+            <if test="title != '' and title != null"> TITLE = #{title}</if>
+        </trim>-->
+        <where>
+            ID = #{id}
+        </where>
+    </update>
 </mapper>
