@@ -1,5 +1,6 @@
 package dwh;
 
+import dwh.entity.Hello;
 import dwh.entity.TestBean;
 import dwh.service.SearchService;
 import org.springframework.context.ApplicationContext;
@@ -14,9 +15,12 @@ import org.springframework.web.context.support.XmlWebApplicationContext;
 public class BeanTest {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
+        /*Hello h1 = (Hello) context.getBean("hello");
+        h1.sayName();*/
+
         SearchService service = (SearchService) context.getBean("service");
         service.connect();
-        TestBean test1 = (TestBean) context.getBean("bean3");
+        TestBean test1 = (TestBean) context.getBean("bean2");
         TestBean test2 = (TestBean) context.getBean("beanByOneCon");
         System.out.println(test1.toString());
     }

@@ -56,4 +56,25 @@
         <constructor-arg type="java.lang.String" value="s3"/>
         <constructor-arg type="dwh.dao.JdbcDao" ref="oracleDao"/>
     </bean>
+
+    <!--
+        别名:一般使用别名是为了兼容（很少使用）
+        一般spring是将别名和BeanId的对应关系使用map存储起来，然后根据别名找到真正的BeanID
+        别名池：aliasMap:Map<alias, ID>
+        bean单例池：Map<ID, 单例对象>
+    -->
+    <!--第一种方式 通过alias标签-->
+    <alias name="bean1" alias="testBean2"/>
+    <!---->
+    <!--
+       id 是bean的标识符,要唯一,如果没有配置id,name就是默认标识符
+       如果配置id,又配置了name,那么name是别名
+       name可以设置多个别名,可以用逗号,分号,空格隔开
+       如果不配置id和name,可以根据applicationContext.getBean(.class)获取对象;
+       class是bean的全限定名=包名+类名
+    -->
+    <bean id="hello" name="hello2 h2,h3;h4" class="dwh.entity.Hello">
+        <property name="name" value="Spring"/>
+    </bean>
+
 </beans>

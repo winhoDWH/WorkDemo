@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author: dengwenhao
@@ -30,6 +32,9 @@ public class MybatisUtil {
     private MybatisUtil(){};
 
     public static SqlSession getSession(){
+        Map<String, Object> map = new HashMap<String, Object>();
+
+        String s ="";
         return sqlSessionFactory.openSession();
     }
 }
