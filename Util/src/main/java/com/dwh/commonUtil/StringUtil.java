@@ -13,13 +13,13 @@ public class StringUtil {
      */
     public static String toString(Object obj)
     {
-        return (obj == null?"":trim(obj.toString(),""));
+        return (obj == null?"":trimOrDefault(obj.toString(),""));
     }
 
     /**
      * 若输入为字符为null,则输出forNull
      */
-    public static String trim(String str, String forNull)
+    public static String trimOrDefault(String str, String forNull)
     {
         if(str==null) {
             return forNull;
