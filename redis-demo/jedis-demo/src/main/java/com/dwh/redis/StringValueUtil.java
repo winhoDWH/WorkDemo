@@ -3,8 +3,6 @@ package com.dwh.redis;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.params.SetParams;
 
-import java.util.LinkedList;
-
 /**
  * @author dengwenhao
  * data 2022-09-20

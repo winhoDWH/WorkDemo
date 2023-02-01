@@ -10,7 +10,7 @@ public class TestApplication {
 
     public static void main(String[] args) {
         //StringValueUtil.ope(JedisPoolUtil.getConnect());
-        Jedis jedis = new Jedis("192.168.204.133", 6379);
+        Jedis jedis = new Jedis("192.168.204.133", 6371);
         StringValueUtil.ope(jedis);
         jedis.close();
     }
